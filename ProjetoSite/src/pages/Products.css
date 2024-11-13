@@ -1,0 +1,104 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.header button i {
+    margin-right: 5px;
+}
+
+
+/* Estiliza o body */
+body {
+    background-color: #cccccc;
+    background-attachment: fixed; /* Mantém a imagem de fundo fixa ao rolar a página */
+    font-family: Arial, Helvetica, sans-serif; /* Define a fonte */
+    margin: 0; /* Remove as margens padrão */
+}
+
+.corpo-pagina{
+    background-color: #f8f9fa; /* Cor do fundo */
+    padding: 30px; /* Adiciona espaçamento interno */
+    border-radius: 20px; /* Arredonda os cantos */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 2.0); /* Adiciona uma sombra leve */
+    width:1230px ;
+    
+}
+
+/* Contêiner principal */
+.main-container {
+    min-height: 100vh; /* Garante que o contêiner ocupe pelo menos 100% da altura da tela */
+    display: flex; /* Usa Flexbox para alinhar os itens */
+    flex-direction: column; /* Alinha os itens em uma coluna */
+    justify-content: space-between; /* Espaça os itens ao longo do eixo vertical */
+    padding: 20px; /* Adiciona espaçamento interno */
+}
+
+/* Contêiner de produtos em grid */
+.produto-container {
+    display: grid; /* Usa Layout de grade para os itens */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Define colunas responsivas */
+    gap: 30px; /* Adiciona espaçamento entre os itens */
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 1200px; /* Define a largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    
+}
+
+
+/* Imagem do produto */
+.product-image {
+    width: 100%; /* Largura total */
+    height: auto; /* Altura automática */
+    max-height: 150px; /* Altura máxima */
+}
+
+/* Contêiner dos botões */
+.button-container {
+    display: flex; /* Usa Flexbox para os botões */
+    justify-content: space-around; /* Espaça os botões uniformemente */
+    width: 100%; /* Largura total */
+    margin-top: 10px; /* Adiciona espaçamento acima */
+}
+.produto-item{
+    display: flex; /* Usa Flexbox para alinhar os itens */
+    flex-direction: column; /* Alinha os itens verticalmente */
+    margin-bottom: 20px; /* Adiciona espaçamento abaixo do item */
+}
+
+/* Estiliza os botões */
+button {
+    color: #1747da; /* Define a cor do texto */
+    font-weight: bold; /* Texto em negrito */
+    background-color: #c7c6cc; /* Cor de fundo */
+    border: none; /* Remove a borda */
+    padding: 10px; /* Adiciona espaçamento interno */
+    margin: 5px; /* Adiciona margem */
+    border-radius: 5px; /* Arredonda os cantos */
+}
+
+/* Estilo para botões desativados */
+button:disabled {
+    color: #999999; /* Cor do texto */
+    background-color: #cccccc; /* Cor de fundo */
+    cursor: not-allowed; /* Cursor de não permitido */
+}
+
+/* Estiliza o rodapé */
+.footer {
+    text-align: center; /* Centraliza o texto */
+    margin-top: 20px; /* Adiciona espaçamento acima */
+}

@@ -1,0 +1,6 @@
+.button-container {
+    display: flex; /* Usa Flexbox para os botões */
+    justify-content: space-around; /* Espaça os botões uniformemente */
+    width: 100%; /* Largura total */
+    margin-top: 10px; /* Adiciona espaçamento acima */
+}
