@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Carrinho.css'; // Crie um arquivo CSS para estilizar o carrinho
+import './Carrinho.css'; 
 
 function Carrinho({ carrinho, setCarrinho, total, setTotal, onClose }) {
   const navigate = useNavigate();
@@ -26,15 +26,15 @@ function Carrinho({ carrinho, setCarrinho, total, setTotal, onClose }) {
 }, []);
 
   
-  const finalizarCompra = () => {
-    alert('Compra finalizada com sucesso!!')
-  };
+const finalizarCompra = () => { 
+  navigate('/checkout', { state: { carrinho, total } }); 
+};
 
-  const handleClick = (product) => {
+const handleClick = (product) => {
     const carrinhoNovo = [...carrinho, product]
     setCarrinho(carrinhoNovo);
     setTotal(total + product.price);
-  }
+}
 
 const handleClickProducts= () => {
   navigate(`/products`)
@@ -60,7 +60,8 @@ const handleClickProducts= () => {
         ))
       )}
       <h2>Total: R${total.toFixed(2)}</h2>
-      <button onClick={finalizarCompra}>Finalizar Compra</button>
+      <button disabled={total === 0} onClick={finalizarCompra}>Finalizar Compra</button>
+      <button onClick={handleClickProducts}>Continuar Comprando</button>
     </div>
   );
 }

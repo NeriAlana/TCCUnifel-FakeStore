@@ -58,8 +58,8 @@ function Products(){
                 <i className="fas fa-shopping-cart"></i> ({carrinho.length}) 
             </button> 
         </header>
-            <h1>Produtos</h1>
             <div className="main-container">
+            <h1>Produtos</h1>
                 <div >
                         <div className="produto-container">
                             {products.map((product) => (
@@ -80,7 +80,10 @@ function Products(){
                     </div>
                 </div>
                 <footer className="footer">
-                    <button className="checkout" onClick={() => setIsModalOpen(true)}>Ver Carrinho</button><br />
+                    <p>
+                    &copy; 2024 Alana Neri - Fakestore. Todos os direitos reservados <br/> 
+                    Contato: marketplace@fakestore.com 
+                    </p>
                 </footer>
             </div>
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}> 

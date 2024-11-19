@@ -5,6 +5,10 @@
     padding: 10px;
     background-color: #f8f8f8;
     border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 2;
+    width: 48%; 
+    z-index: 1000;
 }
 
 .header button {
@@ -45,6 +49,7 @@ body {
     flex-direction: column; /* Alinha os itens em uma coluna */
     justify-content: space-between; /* Espaça os itens ao longo do eixo vertical */
     padding: 20px; /* Adiciona espaçamento interno */
+    padding-top: 70px;
 }
 
 /* Contêiner de produtos em grid */
