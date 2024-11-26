@@ -20,18 +20,13 @@ function Products(){
         }; 
         getData(); 
     }, []);
-    useEffect(() => {
-        console.log('Carrinho atualizado:', carrinho);
-    }, [carrinho]);
+    
     
 
     const handleClick = (product) => {
         const carrinhoNovo = [...carrinho, product]
         setCarrinho(carrinhoNovo);
-        setTotal(total + product.price);
-        console.log('Carrinho atualizado:', carrinho);
-        console.log(carrinhoNovo, total + product.price);
-        
+        setTotal(total + product.price);      
     }
 
     const excluirProduct = (product) => {
