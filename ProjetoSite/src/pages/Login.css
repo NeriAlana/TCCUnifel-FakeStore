@@ -7,7 +7,7 @@ body {
 }
 
 body.login-page{
-        background-size: cover;
+    background-size: cover;
     background-position: center;
     backdrop-filter: blur(10px);
     height: 100px;
@@ -68,10 +68,10 @@ h1{
     color:#1e1e1f; 
 }
 
-button{
-    color:#122f86;
+.entrar{
+    color:#f8f9fc;
     font-weight:bold;
-    background-color:#1e1e1f;
+    background-color:#3dbd39;
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1.0); /* Sombra leve */
 }

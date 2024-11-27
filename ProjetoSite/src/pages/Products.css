@@ -1,14 +1,20 @@
+i{
+    color: #ffffff;
+    
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #f8f8f8;
+    background-color: #f57208;
     border-bottom: 1px solid #ddd;
     position: fixed;
     top: 2;
     width: 48%; 
     z-index: 1000;
+    border-radius: 10px;
 }
 
 .header button {
@@ -18,19 +24,68 @@
     font-size: 16px;
     display: flex;
     align-items: center;
+    
 }
 
 .header button i {
-    margin-right: 5px;
+    margin-right: 15px;
+    
 }
 
+/* Media Query para Tamanhos de Tela Menores */ 
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column; 
+        align-items: flex-start; 
+        padding: 5px; 
+        width: 100%; 
+    } 
+    .header button {
+        margin-bottom: 5px; 
+    } 
+    .header button i { 
+        margin-right: 5px; 
+    } 
+} 
+@media (max-width: 480px) {
+    .header { 
+        flex-direction: column; 
+        align-items: center; 
+    } 
+    .header button { 
+        font-size: 14px; 
+        margin-bottom: 5px; 
+    } 
+    .header button i { 
+        margin-right: 3px; 
+    }
+}
+h1{
+    background-color: #f57208; 
+    border-radius: 10px; 
+    color: #fdfdfd; 
+    height: 60px; 
+    width: 100%; 
+    text-align: center; /* Centraliza o texto */ 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 0 ; 
+}
+/* Adicione este estilo ao seu arquivo Products.css */
+.filter-container {
+    margin-bottom: 20px; /* Adiciona um espaçamento abaixo do filtro */
+    text-align: center; /* Centraliza o filtro horizontalmente */
+    margin-top: 10px; /* Adiciona um espaçamento acima do filtro */
+}
 
 /* Estiliza o body */
 body {
-    background-color: #cccccc;
+    background-color: #f57208;
     background-attachment: fixed; /* Mantém a imagem de fundo fixa ao rolar a página */
     font-family: Arial, Helvetica, sans-serif; /* Define a fonte */
     margin: 0; /* Remove as margens padrão */
+    
 }
 
 .corpo-pagina{
@@ -39,7 +94,7 @@ body {
     border-radius: 20px; /* Arredonda os cantos */
     box-shadow: 0 0 50px rgba(0, 0, 0, 2.0); /* Adiciona uma sombra leve */
     width:1230px ;
-    
+     
 }
 
 /* Contêiner principal */
@@ -52,7 +107,7 @@ body {
     padding-top: 70px;
 }
 
-/* Contêiner de produtos em grid */
+/* Contêiner de produtos em grade */
 .produto-container {
     display: grid; /* Usa Layout de grade para os itens */
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Define colunas responsivas */
@@ -62,33 +117,83 @@ body {
     margin: 0 auto; /* Centraliza horizontalmente */
     
 }
-
-
-/* Imagem do produto */
-.product-image {
-    width: 100%; /* Largura total */
-    height: auto; /* Altura automática */
-    max-height: 150px; /* Altura máxima */
-}
-
-/* Contêiner dos botões */
 .button-container {
     display: flex; /* Usa Flexbox para os botões */
     justify-content: space-around; /* Espaça os botões uniformemente */
     width: 100%; /* Largura total */
     margin-top: 10px; /* Adiciona espaçamento acima */
+    font-weight: bold;
+    border-radius: 5px;
 }
+
+/* Imagem do produto */
+.product-image {
+    width: 100%; /* Largura total */
+    height: 150; /* Altura automática */
+    
+}
+
 .produto-item{
     display: flex; /* Usa Flexbox para alinhar os itens */
     flex-direction: column; /* Alinha os itens verticalmente */
     margin-bottom: 20px; /* Adiciona espaçamento abaixo do item */
+    
 }
+
+.preco{
+    color: #f57208;
+    font-weight: bold;
+    font-size: 18px;
+}
+.produto-button { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 10px; 
+    border: none; 
+    background-color: #fff; 
+    -radius: 10px; 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.produto-button:hover { 
+    box-shadow: 0 10px 12px rgb(0, 0, 0); 
+    transform: scale(1.15); 
+}
+
+
+.button-container { 
+    display: flex; 
+    justify-content: space-around; 
+    width: 100%; 
+    margin-top: 10px; 
+}
+
+.button-add:hover{
+    background-color: #1fbb34;
+    color: #ffffff;
+}
+.button-exc:hover{
+    color: #030303; 
+    font-weight: bold; 
+    background-color: #ccc9c6; 
+    border: none; 
+    padding: 10px; 
+    margin: 5px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease;
+}
+
+.button-exc:enabled { 
+    background-color: #ff0000c9; /* Muda a cor para vermelho quando habilitado */ 
+     }
 
 /* Estiliza os botões */
 button {
-    color: #1747da; /* Define a cor do texto */
+    color: #030303; /* Define a cor do texto */
     font-weight: bold; /* Texto em negrito */
-    background-color: #c7c6cc; /* Cor de fundo */
+    background-color: #ccc9c6; /* Cor de fundo */
     border: none; /* Remove a borda */
     padding: 10px; /* Adiciona espaçamento interno */
     margin: 5px; /* Adiciona margem */
@@ -97,8 +202,6 @@ button {
 
 /* Estilo para botões desativados */
 button:disabled {
-    color: #999999; /* Cor do texto */
-    background-color: #cccccc; /* Cor de fundo */
     cursor: not-allowed; /* Cursor de não permitido */
 }
 
