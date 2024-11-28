@@ -1,9 +1,8 @@
-
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Carrinho from "./Carrinho";
 import Modal from "./Modal";
-import './Products.css';
+import styles from './Products.module.css';
 
 function Products(){
     const [products, setProducts] = useState([]); 
@@ -41,7 +40,7 @@ function Products(){
     };
 
     const handleClick = (product) => {
-        const carrinhoNovo = [...carrinho, product]
+        const carrinhoNovo = [...carrinho, product];
         setCarrinho(carrinhoNovo);
         setTotal(total + product.price);      
     }
@@ -63,64 +62,64 @@ function Products(){
     const handleClickSair = () => {
         navigate('/');
     };
-    
-    
 
     return(
         <>
-        <div className="corpo-pagina">
-        <header className="header"> 
-            <button className="sair" onClick={handleClickSair}> 
-                <i className="fas fa-sign-out-alt"></i>  
-            </button> 
-            <button className="carrinho" onClick={() => setIsModalOpen(true)}> 
-                <i className="fas fa-shopping-cart"></i> {carrinho.length}
-            </button> 
-        </header>
-            <div className="main-container">
-            <h1>Produtos</h1>
-                <div className="filter-container">
-                <label htmlFor="category">Filtrar por Categoria: </label> 
-                    <select id="category" value={selectedCategory} onChange={handleCategoryChange}> 
-                        <option value="">Todas</option> 
-                        {categories.map(category => (
-                            <option key={category} value={category}>{category}</option> 
-                        ))} 
-                    </select>
-                </div>
-                        <div className="produto-container">
-                            {filteredProducts.map((product) => (
-                                <div className="produto-item" key={product.id}>
-                                    <button className="produto-button" onClick={() => handleClickProduct(product.id)} style={{width: '400px', height:'400px'}}>
-                                        <img src={product.image} alt={product.title} width="150" />
-                                        <p>{product.title}</p>
-                                        <p className="preco">{`R$ ${product.price}`}</p> <br />
-                                    </button>
-                                        <div className="button-container">
-                                            <button className="button-add" onClick={() => handleClick(product)}>+</button>
-                                            <button className="button-add" onClick={() => handleClick(product)}>Adicionar ao Carrinho</button>
-                                            <button className="button-exc"disabled={!carrinho.some(item => item.id === product.id) || total === 0} onClick={() => excluirProduct(product)}>-</button>
-                                        </div>
-                                </div>
-                            ))}
-                        </div>
-                </div>
-                <footer className="footer">
+        <div className={styles.pageCapa}>
+            <div className={styles.corpoPagina}>
+                <header className={styles.header}> 
+                    <button className={styles.sair} onClick={handleClickSair}> 
+                        <i className="fas fa-sign-out-alt"></i>  
+                    </button> 
+                    <button className={styles.carrinho} onClick={() => setIsModalOpen(true)}> 
+                        <i className="fas fa-shopping-cart"></i> {carrinho.length}
+                    </button> 
+                </header>
+                    <h1 className={styles.h1}>Produtos</h1>
+                    <div className={styles.filterContainer}>
+                        <label htmlFor="category">Filtrar por Categoria: </label> 
+                        <select id="category" value={selectedCategory} onChange={handleCategoryChange}> 
+                            <option value="">Todas</option> 
+                            {categories.map(category => (
+                                <option key={category} value={category}>{category}</option> 
+                            ))} 
+                        </select>
+                    </div>
+                    <div className={styles.produtoContainer}>
+                        {filteredProducts.map((product) => (
+                            <div className={styles.produtoItem} key={product.id}>
+                                <button className={styles.produtoButton} onClick={() => handleClickProduct(product.id)} >
+                                    <img className={styles.productImage} src={product.image} alt={product.title} />
+                                    <h2 >{product.title}</h2>
+                                    <div>
+                                        <p className={styles.preco}>{`R$ ${product.price}`}</p> <br />
+                                    </div>
+                                    <div className={styles.buttonContainer}>
+                                        {/* <button className={styles.buttonAdd} onClick={() => handleClick(product)}>+</button> */}
+                                        <button className={styles.buttonAdd} onClick={() => handleClick(product)}>Adicionar ao Carrinho</button>
+                                        {/* <button className={styles.buttonExc} disabled={!carrinho.some(item => item.id === product.id) || total === 0} onClick={() => excluirProduct(product)}>-</button> */}
+                                    </div>
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                <footer className={styles.footer}>
                     <p>
-                    &copy; 2024 Alana Neri - Fakestore. Todos os direitos reservados <br/> 
-                    Contato: marketplace@fakestore.com 
+                        &copy; 2024 Alana Neri - Fakestore. Todos os direitos reservados <br/> 
+                        Contato: marketplace@fakestore.com 
                     </p>
                 </footer>
             </div>
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}> 
-                <Carrinho 
+        </div>
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}> 
+            <Carrinho 
                 carrinho={carrinho} 
                 setCarrinho={setCarrinho} 
                 total={total} 
                 setTotal={setTotal} 
                 onClose={() => setIsModalOpen(false)}
-                /> 
-            </Modal>
+            /> 
+        </Modal>
         </>
     );
 }

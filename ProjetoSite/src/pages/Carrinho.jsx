@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Carrinho.css'; 
+import styles from './Carrinho.module.css'; 
 
 function Carrinho({ carrinho, setCarrinho, total, setTotal, onClose }) {
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const handleClickProducts= () => {
 }
 
   return (
-    <div className="carrinho-container">
+    <div className={styles.carrinho-container}>
       <h1>Seu Carrinho</h1>
       {carrinho.length === 0 ? (
         <p>Seu carrinho está vazio</p>

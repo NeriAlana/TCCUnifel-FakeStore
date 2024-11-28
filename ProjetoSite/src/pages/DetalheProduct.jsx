@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Products from "./Products";
+import styles from './DetalheProduct.module.css'
 
 function DetalheProduct() {
     const navigate = useNavigate();

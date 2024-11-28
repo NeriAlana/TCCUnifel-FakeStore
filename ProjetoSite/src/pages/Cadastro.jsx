@@ -1,7 +1,7 @@
 import validator from 'email-validator';
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
-import './Cadastro.css';
+import styles from'./Cadastro.module.css';
 function Cadastro() {
     const navigate = useNavigate();
     const [email, setEmail]= useState('');

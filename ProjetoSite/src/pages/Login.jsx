@@ -1,62 +1,58 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import validator from 'email-validator';
-import './Login.css';
-
+import styles from './Login.module.css'; // Importa o CSS Module
 
 function Login() {
     const navigate = useNavigate();
-    const [email, setEmail]= useState('');
-    const [password, setPassword]= useState('');
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleClick = () => {
-        if (validator.validate(email) || password.length >= 8){
-            navigate('/products')
-            // Se o e-mail for válido e a senha for maior ou igual a 8 dígitos, navega para a tela de produtos
+        if (validator.validate(email) && password.length >= 8) {
+            navigate('/products');
         }
     }
 
     const handleClickCadastro = () => {
-        navigate('/cadastro')
+        navigate('/cadastro');
     };
-  
 
-    return(
-        <div>                
-        <form >
-            <div className= "bloco">            
-                <h1 >Login</h1>
-                    <div className= "linha"></div>
-                    <div className="input-container" >
-                        <label className="email">Email</label>
-                        <input 
-                            onChange={(event) => setEmail(event.target.value)} 
-                            type="email" 
-                            placeholder="contato@react.com" 
-                            className="input-field"/> 
-                    </div><br />
-            
-                    <div className="input-container" >
-                        <label className="senha">Password</label>
-                        
-                        <input  
-                            onChange={(event) => setPassword(event.target.value)} 
-                            type="password" 
-                            placeholder="1234"
-                            className="input-field"/>
+    return (
+        <div className={styles.loginPage}>
+            <div className={styles.loginContainer}>
+                <form>
+                    <div className={styles.bloco}>
+                        <h1>Login</h1>
+                        <div className={styles.linha}></div>
+                        <div className={styles.inputContainer}>
+                            <label className={styles.email}>Email</label>
+                            <input
+                                onChange={(event) => setEmail(event.target.value)}
+                                type="email"
+                                placeholder="contato@react.com"
+                                className={styles.inputField}
+                            />
+                        </div><br />
+                        <div className={styles.inputContainer}>
+                            <label className={styles.senha}>Password</label>
+                            <input
+                                onChange={(event) => setPassword(event.target.value)}
+                                type="password"
+                                placeholder="1234"
+                                className={styles.inputField}
+                            />
+                        </div>
+                        <br />
+                        <button className={styles.entrar} disabled={!validator.validate(email) || password.length < 8} onClick={handleClick}>Entrar</button>
+                        <br /><br />
+                        <Link to='/cadastro' className={styles.boton} onClick={handleClickCadastro}>Cadastre-se</Link>
+                        <Link to='/resetSenha' className={styles.boton}>Esqueceu a senha?</Link>
                     </div>
-                    <br />
-                    <button className="entrar" disabled={!validator.validate(email)|| password.length < 8}
-                    onClick={handleClick}>Entrar</button>
-                    <br /><br />
-                    <Link to='/cadastro' className='boton' onClick={handleClickCadastro}>Cadastre-se</Link>    
-                    <Link to='/resetSenha' className='boton'>Esqueceu a senha?</Link>
-            </div> 
-        </form>
-        </div> 
-    )
-
+                </form>
+            </div>
+        </div>
+    );
 }
 
 export default Login;
