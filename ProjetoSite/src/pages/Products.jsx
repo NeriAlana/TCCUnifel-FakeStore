@@ -39,21 +39,22 @@ function Products(){
         setSelectedCategory(event.target.value); 
     };
 
-    const handleClick = (product) => {
+    const handleClick = (event,product) => {
+        event.stopPropagation();
         const carrinhoNovo = [...carrinho, product];
         setCarrinho(carrinhoNovo);
         setTotal(total + product.price);      
     }
 
-    const excluirProduct = (product) => {
-        const IndiceProduct = carrinho.findIndex(item => item.id === product.id);
-        if (IndiceProduct !== -1) {
-            const carrinhoNovo = [...carrinho];
-            carrinhoNovo.splice(IndiceProduct, 1);
-            setCarrinho(carrinhoNovo);
-            setTotal(total - product.price);
-        }
-    };
+    // const excluirProduct = (product) => {
+    //     const IndiceProduct = carrinho.findIndex(item => item.id === product.id);
+    //     if (IndiceProduct !== -1) {
+    //         const carrinhoNovo = [...carrinho];
+    //         carrinhoNovo.splice(IndiceProduct, 1);
+    //         setCarrinho(carrinhoNovo);
+    //         setTotal(total - product.price);
+    //     }
+    // };
 
     const handleClickProduct= (id) => {
         navigate(`/product/${id}`)
@@ -88,18 +89,16 @@ function Products(){
                     <div className={styles.produtoContainer}>
                         {filteredProducts.map((product) => (
                             <div className={styles.produtoItem} key={product.id}>
-                                <button className={styles.produtoButton} onClick={() => handleClickProduct(product.id)} >
+                                <div className={styles.produtoButton} onClick={() => handleClickProduct(product.id)} >
                                     <img className={styles.productImage} src={product.image} alt={product.title} />
                                     <h2 >{product.title}</h2>
-                                    <div>
-                                        <p className={styles.preco}>{`R$ ${product.price}`}</p> <br />
-                                    </div>
+                                    <p className={styles.preco}>{`R$ ${product.price}`}</p> <br />
                                     <div className={styles.buttonContainer}>
                                         {/* <button className={styles.buttonAdd} onClick={() => handleClick(product)}>+</button> */}
-                                        <button className={styles.buttonAdd} onClick={() => handleClick(product)}>Adicionar ao Carrinho</button>
+                                        <button className={styles.buttonAdd} onClick={(e) => handleClick(e, product)}>Adicionar ao Carrinho</button>
                                         {/* <button className={styles.buttonExc} disabled={!carrinho.some(item => item.id === product.id) || total === 0} onClick={() => excluirProduct(product)}>-</button> */}
                                     </div>
-                                </button>
+                                </div>
                             </div>
                         ))}
                     </div>
